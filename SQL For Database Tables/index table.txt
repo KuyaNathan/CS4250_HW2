@@ -1,0 +1,24 @@
+-- Table: public.index
+
+-- DROP TABLE IF EXISTS public.index;
+
+CREATE TABLE IF NOT EXISTS public.index
+(
+    term_count integer NOT NULL,
+    doc integer NOT NULL,
+    term character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT index_pk PRIMARY KEY (doc, term),
+    CONSTRAINT doc_fk FOREIGN KEY (doc)
+        REFERENCES public.document (doc_number) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT term_fk FOREIGN KEY (term)
+        REFERENCES public.term (term) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.index
+    OWNER to postgres;

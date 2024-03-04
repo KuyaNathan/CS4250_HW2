@@ -1,0 +1,15 @@
+-- Table: public.category
+
+-- DROP TABLE IF EXISTS public.category;
+
+CREATE TABLE IF NOT EXISTS public.category
+(
+    id_cat integer NOT NULL,
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Category_pkey" PRIMARY KEY (id_cat)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.category
+    OWNER to postgres;

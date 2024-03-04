@@ -1,0 +1,23 @@
+-- Table: public.document
+
+-- DROP TABLE IF EXISTS public.document;
+
+CREATE TABLE IF NOT EXISTS public.document
+(
+    doc_number integer NOT NULL,
+    text character varying COLLATE pg_catalog."default" NOT NULL,
+    title character varying COLLATE pg_catalog."default" NOT NULL,
+    num_chars integer NOT NULL,
+    date date NOT NULL,
+    category integer NOT NULL,
+    CONSTRAINT "Document_pkey" PRIMARY KEY (doc_number),
+    CONSTRAINT "Category" FOREIGN KEY (category)
+        REFERENCES public.category (id_cat) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.document
+    OWNER to postgres;
