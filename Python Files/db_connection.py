@@ -48,7 +48,6 @@ def createDocument(cur, docId, docText, docTitle, docDate, docCat):
     cur.execute(sql, {'catName': docCat})
     row = cur.fetchall()
     catID = row[0]
-    print(catID)
 
     # 2 Insert the document in the database. For num_chars, discard the spaces and punctuation marks.
     noPunc = ''.join(char for char in docText if char not in punctuation) # discard punctuations
