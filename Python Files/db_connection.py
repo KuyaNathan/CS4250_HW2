@@ -87,11 +87,9 @@ def createDocument(cur, docId, docText, docTitle, docDate, docCat):
     # 4.2 Create a data structure the stores how many times (count) each term appears in the document
     # 4.3 Insert the term and its corresponding count into the database
     distinctTermsInDoc = list(set(termsInDoc))  # list for all the disctinct terms in the text
-    print(distinctTermsInDoc)
     trackTermAppearances = {}
     for term in distinctTermsInDoc:             # iterate through terms and get their number of appearances
         trackTermAppearances[term] = docText.lower().count(term)
-    print(trackTermAppearances)
 
     for term, count in trackTermAppearances.items():    # add each term and their counts into the Index
         sql = "Insert into Index(doc, term, term_count) Values(%s, %s, %s)"
